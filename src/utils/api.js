@@ -4,8 +4,8 @@ const newsApi = axios.create({
     baseURL:"https://yujia-news.herokuapp.com/api"
 });
 
-export const getAllArticles = () => {
-    return newsApi.get("/articles").then((res) => {
+export const getAllArticles = (topic) => {
+    return newsApi.get("/articles", {params:{topic: topic}}).then((res) => {
         return res.data
     })
 }
@@ -16,8 +16,3 @@ export const getAllTopics = () => {
     })
 }
 
-export const getArticlesByTopic = (topic) => {
-    return newsApi.get(`/articles?topic=${topic}`).then((res) => {
-        return res.data
-    })
-}
