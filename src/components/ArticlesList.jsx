@@ -4,12 +4,22 @@ import { Link } from 'react-router-dom';
 import Votes from "./Votes";
 
 const ArticlesList = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [articles, setArticles] = useState([])
+    
     useEffect(() => {
         getAllArticles().then((data) => {
             setArticles(data)
+            setIsLoading(false);
         })
-    }, [])
+    }, []);
+
+    if(isLoading) {
+        return(
+            <p>Loading...</p>
+        )
+    };
+
     return (
         <>
         <ul>
