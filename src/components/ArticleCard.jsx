@@ -3,7 +3,7 @@ import Votes from './Votes'
 
 const ArticleCard = ({article}) => {
     return (
-        <li key={article.article_id}>
+        <li >
                             <Link >
                             <h3>{article.title}</h3>
                             </Link>
