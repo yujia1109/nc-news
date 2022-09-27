@@ -4,6 +4,7 @@ import { getAllTopics } from "../utils/api";
 
 const Nav = () => {
     const [topics, setTopics] = useState([]);
+
     useEffect(() => {
         getAllTopics().then((data) => {
             setTopics(data)
@@ -14,8 +15,8 @@ const Nav = () => {
         <section>
             <Link to="/"><h2>Home</h2></Link>
             <nav>
-                {topics.map((topic) => {
-                    return <button key={topic.slug}>{topic.slug}</button>
+                {topics.map((topic) => {             
+                    return <Link to={`/articles/${topic.slug}` } key={topic.slug} >{topic.slug} </Link>
                 })}
             </nav>
         </section>
