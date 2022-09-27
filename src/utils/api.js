@@ -5,7 +5,7 @@ const newsApi = axios.create({
 });
 
 export const getAllArticles = (topic) => {
-    return newsApi.get("/articles", {params:{topic: topic}}).then((res) => {
+    return newsApi.get("/articles", {params:{topic}}).then((res) => {
         return res.data
     })
 }
@@ -16,3 +16,8 @@ export const getAllTopics = () => {
     })
 }
 
+export const getArticleById = (article_id) => {
+    return newsApi.get(`/articles/${article_id}`).then((res) => {
+        return res.data;
+    })
+};

@@ -16,7 +16,7 @@ const Nav = () => {
             <Link to="/"><h2>Home</h2></Link>
             <nav>
                 {topics.map((topic) => {             
-                    return <Link to={`/articles/${topic.slug}` } key={topic.slug} >{topic.slug} </Link>
+                    return <Link to={`/${topic.slug}` } key={topic.slug} >{topic.slug} </Link>
                 })}
             </nav>
         </section>

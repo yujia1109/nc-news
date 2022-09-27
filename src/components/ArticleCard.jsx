@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-import Votes from './Votes'
+
 
 const ArticleCard = ({article}) => {
     return (
         <li >
-                            <Link >
+                            <Link to={`/articles/${article.article_id}`} >
                             <h3>{article.title}</h3>
                             </Link>
                             <p>Author: {article.author}</p>
                             <p>Topic: {article.topic}</p>
-                            <Votes votes={article.votes}/>
+                            <p>Votes: {article.votes}</p>
                             <p>Comments: {article.comment_count}</p>
                         </li>
     )
