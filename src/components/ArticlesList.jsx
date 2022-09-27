@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { getAllArticles } from "../utils/api";
-import { Link } from 'react-router-dom';
-import Votes from "./Votes";
+import ArticleCard from "./ArticleCard";
 
 const ArticlesList = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [articles, setArticles] = useState([])
     
     useEffect(() => {
+        setIsLoading(true);
         getAllArticles().then((data) => {
             setArticles(data)
             setIsLoading(false);
@@ -24,18 +24,7 @@ const ArticlesList = () => {
         <>
         <ul>
             {articles.map((article) => {
-                return (
-                        <li key={article.article_id}>
-                            <Link >
-                            <h3>{article.title}</h3>
-                            </Link>
-                            <p>Author: {article.author}</p>
-                            <p>Topic: {article.topic}</p>
-                            <Votes votes={article.votes}/>
-                            <p>Comments: {article.comment_count}</p>
-                        </li>
-                )
-                
+                return ( <ArticleCard article={article} />)          
             })}
         </ul>
         </>
