@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-import { getAllArticles, getArticlesByTopic } from "../utils/api";
+import { getAllArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 
 const TopicArticles = () => {
