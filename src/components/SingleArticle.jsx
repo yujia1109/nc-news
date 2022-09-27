@@ -29,7 +29,7 @@ const SingleArticle = () => {
             <p>{article.created_at}</p>
             <p>{article.body}</p>
             <p>Comments: {article.comment_count}</p>
-            <Votes votes={article.votes}/>
+            <Votes article_id={article.article_id} votes={article.votes}/>
         </section>
     )
 }
