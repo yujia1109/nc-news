@@ -28,6 +28,12 @@ export const getUsers = () => {
     })
 }
 
+export const getCommentsByArticleId = (article_id) => {
+    return newsApi.get(`/articles/${article_id}/comments`).then((res) => {
+        return res.data;
+    })
+}
+
 export const updateVotes = (article_id, votes) => {
     return newsApi.patch(`articles/${article_id}`, {
         inc_votes: votes
