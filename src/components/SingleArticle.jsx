@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticleById } from "../utils/api";
 import CommentsList from "./CommentsList";
-import Votes from './Votes'
+import Votes from './Votes';
 
 
 const SingleArticle = () => {
