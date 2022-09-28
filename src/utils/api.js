@@ -35,9 +35,17 @@ export const getCommentsByArticleId = (article_id) => {
 }
 
 export const updateVotes = (article_id, votes) => {
-    return newsApi.patch(`articles/${article_id}`, {
+    return newsApi.patch(`/articles/${article_id}`, {
         inc_votes: votes
     }).then((res) => {
         return res.data
+    })
+}
+
+export const postComment = (article_id, username, body) => {
+    return newsApi.post(`/articles/${article_id}/comments`, {
+        username, body
+    }).then((res) => {
+        return res.data;
     })
 }
