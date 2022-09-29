@@ -39,7 +39,14 @@ const TopicArticles = () => {
         })
     }
 
-    const handleOrder = (order) => {
+    const handleAsc = (order) => {
+        setParams((currParams) => {
+            return {...currParams, order: order}
+        })
+    }
+
+
+    const handleDesc = (order) => {
         setParams((currParams) => {
             return {...currParams, order: order}
         })
@@ -58,7 +65,8 @@ const TopicArticles = () => {
             <button onClick={() => handleDate('created_at')}>date</button>
             <button onClick={() => handleComment('comment_count')}>comments</button>
             <button onClick={() => handleVotes('votes')}>votes</button> 
-            <button onClick={() => handleOrder('asc')}>asc</button> 
+            <button onClick={() => handleAsc('asc')}>asc</button> 
+            <button onClick={() => handleDesc('desc')}>desc</button> 
              <ul>
             {articlesByTopic.map((article) => {
                 return <ArticleCard article={article} key={article.article_id} />
