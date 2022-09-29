@@ -40,3 +40,13 @@
     transform: rotate(360deg);
   }
 }
+
+.comment-constainer {
+  font-size: 1.5em
+}
+
+.comment-container--highlighted {
+  color: aliceblue;
+  background-color: blueviolet;
+  border-color:cornsilk
+}
