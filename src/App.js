@@ -4,8 +4,7 @@ import Header from './components/Header';
 import Nav from './components/Nav';
 import { BrowserRouter } from 'react-router-dom';
 import { UserContext } from './contexts/User';
-import ArticlesList from './components/ArticlesList';
-import TopicArticles from './components/TopicArticles';
+import Articles from './components/Articles';
 import SingleArticle from './components/SingleArticle';
 import ChangeUsers from './components/ChangeUsers';
 import { useState } from 'react';
@@ -25,8 +24,8 @@ function App() {
       <Nav />
       <section>
       <Routes>
-        <Route path="/" element={<ArticlesList />} />
-        <Route path="/:topic" element={<TopicArticles />} />
+        <Route path="/" element={<Articles />} />
+        <Route path="/:topic" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
         <Route path="/users" element={<ChangeUsers />} />
       </Routes>

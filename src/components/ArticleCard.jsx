@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-
 const ArticleCard = ({article}) => {
     return (
         <li >
@@ -9,6 +8,7 @@ const ArticleCard = ({article}) => {
                             </Link>
                             <p>Author: {article.author}</p>
                             <p>Topic: {article.topic}</p>
+                            <p>Created_at: {article.created_at} </p>
                             <p>Votes: {article.votes}</p>
                             <p>Comments: {article.comment_count}</p>
                         </li>
