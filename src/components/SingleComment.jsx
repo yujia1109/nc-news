@@ -6,14 +6,14 @@ const SingleComment = ({comment_id, votes, author, body, created_at}) => {
     const {loggedInUser} = useContext(UserContext);
     const [highlighted, setHighlighted] = useState(false);
     const [deleteInfo, setDeleteInfo] = useState(false)
-    const [buttonDisable, setButtonDisable] = useState('')
+    const [buttonDisable, setButtonDisable] = useState(false)
     
     const handleDelete = () => {
-        setButtonDisable('disabled')
+        setButtonDisable(true)
         setDeleteInfo(true)
         deleteComment(comment_id).then(() => { })
         .catch((err) => {
-           setButtonDisable('')
+           setButtonDisable(false)
            setDeleteInfo(false)
            setHighlighted(false)
         })
