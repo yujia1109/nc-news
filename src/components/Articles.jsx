@@ -7,7 +7,8 @@ const TopicArticles = () => {
     const {topic} = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const[articlesByTopic, setArticlesByTopic] = useState([]);
-    const [params, setParams] = useState({})
+    const [params, setParams] = useState({});
+    const [orderBy, setOrderBy] = useState('asc')
 
     useEffect(() => {
         setIsLoading(true);
@@ -39,17 +40,15 @@ const TopicArticles = () => {
         })
     }
 
-    const handleAsc = (order) => {
+    const switchOrder = () => {
         setParams((currParams) => {
-            return {...currParams, order: order}
+            return {...currParams, order: orderBy}
         })
-    }
 
-
-    const handleDesc = (order) => {
-        setParams((currParams) => {
-            return {...currParams, order: order}
+        setOrderBy((currOrder) => {
+            return currOrder === 'asc' ? "desc" : 'asc'
         })
+
     }
 
 
@@ -65,8 +64,7 @@ const TopicArticles = () => {
             <button onClick={() => handleDate('created_at')}>date</button>
             <button onClick={() => handleComment('comment_count')}>comments</button>
             <button onClick={() => handleVotes('votes')}>votes</button> 
-            <button onClick={() => handleAsc('asc')}>asc</button> 
-            <button onClick={() => handleDesc('desc')}>desc</button> 
+            <button onClick={() => switchOrder()}>{orderBy ==='asc'? 'asc' : 'desc'}</button>
              <ul>
             {articlesByTopic.map((article) => {
                 return <ArticleCard article={article} key={article.article_id} />
