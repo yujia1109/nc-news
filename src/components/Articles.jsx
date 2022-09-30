@@ -28,7 +28,7 @@ const TopicArticles = () => {
     }, [topic])
 
     if(error) {      
-       return <ErrorPage message={error} />;
+       return <ErrorPage />;
     }
 
     const handleDate = (column) => {

@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import {useParams } from "react-router-dom"
 import { getArticleById } from "../utils/api";
 import CommentsList from "./CommentsList";
 import Votes from './Votes';
+import Error404 from "./Error404";
 
 
 const SingleArticle = () => {
     const {article_id} = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [article, setArticle] = useState('');
-    const navigate = useNavigate()
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         setIsLoading(true);
@@ -18,7 +19,8 @@ const SingleArticle = () => {
             setIsLoading(false);
         })
         .catch((err) => {
-            navigate('/404')
+            setIsLoading(false)
+            setError({err})
         })
    }, [article_id])
 
@@ -27,6 +29,9 @@ const SingleArticle = () => {
           <p>Loading...</p>
        )
     };
+   if(error) {     
+        return <Error404 />;
+     }
 
     return(
         <section>

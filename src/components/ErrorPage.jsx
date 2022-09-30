@@ -1,6 +1,9 @@
-const ErrorPage = ({message}) => {
-    const errorInfo = message.err.response.data.msg;
-    return <h3>{errorInfo}! 🙉</h3>;
+const ErrorPage = () => {
+    return (
+        <section>
+            <h3>ERROR! Topic not found 🙉</h3>
+        </section>
+    )
 }
 
 export default ErrorPage;
