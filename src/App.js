@@ -27,7 +27,7 @@ function App() {
         <Route path="/articles/topics/:topic" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
         <Route path="/users" element={<ChangeUsers />} />
-        <Route path="*" element={<h3>No path found 🐬 🐬 🐬</h3>} />
+        <Route path="*" element={<h3>No path found <span role="img" aria-label='whale'>🐬 🐬 🐬</span> </h3>} />
       </Routes>
       </section>     
     </div>
