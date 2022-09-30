@@ -25,9 +25,10 @@ function App() {
       <section>
       <Routes>
         <Route path="/" element={<Articles />} />
-        <Route path="/:topic" element={<Articles />} />
+        <Route path="/articles/topics/:topic" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
         <Route path="/users" element={<ChangeUsers />} />
+        <Route path="*" element={<p>No path found 🐬 🐬 🐬</p>} />
       </Routes>
       </section>     
     </div>

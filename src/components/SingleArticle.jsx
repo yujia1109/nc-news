@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getArticleById } from "../utils/api";
 import CommentsList from "./CommentsList";
 import Votes from './Votes';
@@ -9,11 +9,16 @@ const SingleArticle = () => {
     const {article_id} = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [article, setArticle] = useState('');
+    const navigate = useNavigate()
+
     useEffect(() => {
         setIsLoading(true);
-        getArticleById(article_id).then((data) => {
+        getArticleById(article_id).then((data) => {    
             setArticle(data.article)
             setIsLoading(false);
+        })
+        .catch((err) => {
+            navigate('/404')
         })
    }, [article_id])
 
