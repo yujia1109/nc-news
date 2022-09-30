@@ -9,7 +9,6 @@ import SingleArticle from './components/SingleArticle';
 import ChangeUsers from './components/ChangeUsers';
 import { useState } from 'react';
 
-
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
     username:"tickle122",name:"Tom Tickle",
@@ -25,9 +24,10 @@ function App() {
       <section>
       <Routes>
         <Route path="/" element={<Articles />} />
-        <Route path="/:topic" element={<Articles />} />
+        <Route path="/articles/topics/:topic" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
         <Route path="/users" element={<ChangeUsers />} />
+        <Route path="*" element={<h3>No path found 🐬 🐬 🐬</h3>} />
       </Routes>
       </section>     
     </div>

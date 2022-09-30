@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import {useParams } from "react-router-dom"
 import { getArticleById } from "../utils/api";
 import CommentsList from "./CommentsList";
 import Votes from './Votes';
+import Error404 from "./Error404";
 
 
 const SingleArticle = () => {
     const {article_id} = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [article, setArticle] = useState('');
+    const [error, setError] = useState(null);
+
     useEffect(() => {
         setIsLoading(true);
-        getArticleById(article_id).then((data) => {
+        getArticleById(article_id).then((data) => {    
             setArticle(data.article)
             setIsLoading(false);
+        })
+        .catch((err) => {
+            setIsLoading(false)
+            setError({err})
         })
    }, [article_id])
 
@@ -22,6 +29,9 @@ const SingleArticle = () => {
           <p>Loading...</p>
        )
     };
+   if(error) {     
+        return <Error404 />;
+     }
 
     return(
         <section>

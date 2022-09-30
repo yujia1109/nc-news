@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { getAllArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
+import ErrorPage from "./ErrorPage";
 
 const TopicArticles = () => {
     const {topic} = useParams();
@@ -9,6 +10,7 @@ const TopicArticles = () => {
     const[articlesByTopic, setArticlesByTopic] = useState([]);
     const [params, setParams] = useState({});
     const [orderBy, setOrderBy] = useState('asc')
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         setIsLoading(true);
@@ -16,11 +18,18 @@ const TopicArticles = () => {
            setArticlesByTopic(data)
            setIsLoading(false);
         })
+        .catch((err) => {
+            setError({err})
+        })
     }, [params]);
 
     useEffect(() => {
         setParams({topic})
     }, [topic])
+
+    if(error) {      
+       return <ErrorPage />;
+    }
 
     const handleDate = (column) => {
         setParams((currParams) => {
